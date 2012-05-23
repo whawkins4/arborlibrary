@@ -41,7 +41,7 @@ update checkout_import set user_id = trim(user_id);
 update checkout_import set checkout_time = trim(checkout_time);
 
 
-update checkout_import set checkout_time ='04/01/2011 12:23:42' where length(checkout_time)<4 or checkout_time is null;
+update checkout_import set checkout_time ='05/23/2011 03:01:42' where length(checkout_time)<4 or checkout_time is null;
 
 update checkout_import set user_id = m.new from library_card_map m where m.old = checkout_import.user_id;
 

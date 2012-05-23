@@ -9,11 +9,11 @@ Holds: <%= pluralize(@total_holds, "hold") %><br />
 Outstanding Books: <%= pluralize(@total_checkouts, "book") %><br />
 
 <h2>Catalog Maintenance</h2>
-<input type=button value="Catalog Book" onclick="window.open('/books/new', 'New Book','width=915,height=600,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+<input type=button value="Catalog Book" onclick="window.open('/books/new', '_parent','width=915,height=600,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
 
-<input type=button value="New User" onclick="window.open('/users/new', 'New User','width=250,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+<input type=button value="New User" onclick="window.open('/users/new', '_blank','width=250,height=500,left=300,top=200,fullscreen=yes,toolbar=no,titlebar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
 
-<input type=button value="New Publisher" onclick="window.open('/publishers/new', 'New Publisher','width=250,height=400,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+<input type=button value="New Publisher" onclick="window.open('/publishers/new', '_self', 'width=250,height=400,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
 
 <input type=button value="Simple Search" onclick="window.open('/', 'Simple Search','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
 
@@ -37,10 +37,7 @@ Outstanding Books: <%= pluralize(@total_checkouts, "book") %><br />
 <input type=button value="Titles w/ Missing Author" onclick="window.open('/authors/78668', 'Titles w/ Missing Author','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
 </div>
 
-<div id='col2'><h2>Minimally Viable Product</h2>
-#todo implement SECURITY across admin pages<br/>
-
-<h2>Data Todos</h2>
+<div id='col2'><h2>Data Tasks</h2>
 #todo query against the inventory for known books that we don't actually have in the system<br/>
 #todo import most recently cataloged books, checkouts, checkins<br/>
 #todo remove final period from book title ?????<br/>
@@ -51,7 +48,7 @@ select auth_last,auth_first, count(*) from authors group by auth_last, auth_firs
 #todo generate report for books w/o copy and copies w/o book<br/>
 #todo get rid of the books that linda has marked with a D- prefix in the isbn including moving copies over
 
-<h2>Maximally Viable Product</h2>
+<h2>Maximally Viable Product Tasks</h2>
 #todo remove copies i.e. deaccession copies from catalog ("logical delete")</br>
 #todo print catalog card from each entry screen<br />
 #todo error upon adding author with identical first middle and last (consider safety check if matching first and last)<br/>
