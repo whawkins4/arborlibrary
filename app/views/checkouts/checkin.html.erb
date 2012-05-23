@@ -1,0 +1,48 @@
+<h2>Check In Books</h2>
+
+<form id="checkin_form">
+	<input id="accession" type="text" name="accession"/>
+	<input type="submit" value="Checkin"/>
+	<span id="status"/>
+</form>
+
+<ul id="success_messages"/>
+<script type="text/javascript" charset="utf-8">
+	$(function(){
+		
+		var addStatusRow = function(txt) {
+			$('<li/>').text(txt).prependTo('#success_messages');
+		}
+		
+		var frm = $('#checkin_form');
+		frm.submit(
+			function(){
+				var accessionFld = frm.find('input[name="accession"]')
+				var accession = accessionFld.val();
+				if (accession && accession.length === 8 ) {
+				arbor.server.checkin(accession).done(function(resp){
+					if (resp && resp.msg) {
+
+						if (resp.success==='true') {
+//							accessionFld.val('');
+						}
+					addStatusRow(resp.msg);
+					}					
+					}					
+					);
+				;}
+				else {
+
+					addStatusRow("accession code must be 8 digits long")
+				}
+				
+				accessionFld.val('').focus();
+				return false;
+				
+			}
+			);
+			
+			$('#accession').focus();
+			
+	});
+</script>

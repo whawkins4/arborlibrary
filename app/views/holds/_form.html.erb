@@ -1,0 +1,29 @@
+<%= form_for(@hold) do |f| %>
+  <% if @hold.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hold.errors.count, "error") %> prohibited this hold from being saved:</h2>
+
+      <ul>
+      <% @hold.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :book_accession_id %><br />
+    <%= f.number_field :book_accession_id %>
+  </div>
+  <div class="field">
+    <%= f.label :patron_id %><br />
+    <%= f.number_field :patron_id %>
+  </div>
+  <div class="field">
+    <%= f.label :hold_date %><br />
+    <%= f.datetime_select :hold_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

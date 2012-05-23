@@ -1,0 +1,9 @@
+<h2><% if @copy.book %>
+	<i><%= @copy.book.title %></i> (<%= @copy.book.isbn %>)
+<% else %>
+	Warning no book selected.  Go back to an edit book screen and hit new copy.
+<% end %></h2>
+
+<br/>
+
+<%= render 'form' %>

@@ -1,0 +1,21 @@
+// Place all the styles related to the Checkouts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.checkouts {
+	list-style:none;
+	padding-left: 0px;
+}
+
+tr.print_checkouts {
+page-break-before: always;
+}
+
+ul#success_messages {
+	list-style:none;
+	padding-left:0px;
+}
+
+@media print {
+    body { font-size: 10pt }
+  }

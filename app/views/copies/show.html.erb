@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Accession:</b>
+  <%= @copy.accession %>
+</p>
+
+<p>
+  <b>Dewey:</b>
+  <%= @copy.dewey %>
+</p>
+
+<p>
+  <b>Cutter:</b>
+  <%= @copy.cutter %>
+</p>
+
+<%  if @user and @user.user_type=='Admin' %>
+<%= link_to 'Show', @copy %>
+<%= link_to 'Destroy', @copy, confirm: 'Are you sure?', method: :delete %>
+<%= link_to 'Edit', edit_copy_path(@copy) %>
+<% end %>
+

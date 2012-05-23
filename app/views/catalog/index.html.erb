@@ -1,0 +1,26 @@
+<h2>Books</h2>
+
+<table>
+  <tr>
+    <th>Dewey</th>
+    <th>Cutter</th>
+    <th>Author</th>
+    <th>Title</th>
+  </tr>
+
+<% @books.each do |book| %>
+  <tr>
+    <td><%= book.dewey %></td>
+    <td><%= book.cutter %></td>
+	<% author = book.authors[0] 
+		if author
+	%>
+    <td><%= author.auth_last %>, <%= author.auth_first %></td>
+
+	<% end %>
+	<td><%= link_to h(book.title), :controller=>:books,:action=>:show, :id=>book %></td>
+  </tr>
+<% end %>
+</table>
+
+<p><%= will_paginate @books if !@disable_pagination%></p>

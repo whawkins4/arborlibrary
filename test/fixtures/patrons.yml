@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  patron_last: MyString
+  patron_first: MyString
+  patron_class: MyString
+  patron_grade: MyString
+
+two:
+  patron_last: MyString
+  patron_first: MyString
+  patron_class: MyString
+  patron_grade: MyString

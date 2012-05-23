@@ -1,0 +1,59 @@
+<h2>Check Out Books</h2>
+
+
+
+<% if flash[:notice] %>
+<p class="flash"><%= flash[:notice] %></p>
+<% end %>
+
+
+
+<% if @user %>
+<p>
+Welcome Back <%= h(@user.name)%>, ready to get reading?
+
+<form action="/checkouts" method="post">
+	Enter or scan the book accession number: <input id="accession" name="accession" type="text"></input>
+	<input type="submit" value="Enter"/>
+</form>
+</p>
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+	$('#accession').focus();
+});	
+</script>
+<% else %>
+<form id="card_form" action="/checkouts/new" method="get">
+	Enter your library card number: <input id="library_card" name="library_card" type="text"></input>
+	<input type="submit" value="Enter"/>
+</form>
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+	$('#library_card').focus();
+});	
+</script>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+
+	$(function(){
+
+		<% if @playErrorSound %>
+			$('#bonk')[0].play();
+		<% end %>
+		$('#card_form').submit(function(){
+			var accession = $('#accession').val();
+			if (accession && accession.length != 8) {
+				$('#bonk')[0].play();
+				return false;
+			}
+			return true;
+		});
+	});
+
+	
+</script>
+
+<audio id="bonk" src="/bonk.mp3"></audio>

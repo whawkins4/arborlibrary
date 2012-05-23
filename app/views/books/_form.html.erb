@@ -1,0 +1,253 @@
+<%= form_for(@book) do |f| %>
+<% if @book.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+	<ul>
+		<% @book.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+HELP: Place your mouse above each field's name for help entering data into that field.  Required Fields are marked with a red asterisk<font color="red">*</font><br/><br/>
+
+<fieldset>
+	<legend>Edit Book Details</legend>
+
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :isbn, :title=>"Enter the 13-digit ISBN from the copyright page." %><font color="red">*</font><br />
+		<%= f.text_field :isbn %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :title, :title=>"Enter the Title exactly as written on the copyright page." %><font color="red">*</font><br />
+		<%= f.text_field :title %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :subtitle, :title=>"Enter the Subtitle exactly as written on the copyright page." %><br />
+		<%= f.text_field :subtitle %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :series, :title=>"Enter the Series Title, if any.  If none, leave blank." %><br />
+		<%= f.text_field :series %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :series_number, :title=>"Enter the Series Number, as a numeral, only if there is a Series Title.  If none, leave blank." %><br />
+		<%= f.text_field :series_number %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :format, :title=>"Enter the Format--usually either 'hdbk' or 'pbk'.  For other formats, use a short descriptive name such as 'dvd', 'coil-bound', 'unbound', etc." %><br />
+		<%= f.text_field :format %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :lccn, :title=>"Enter the Library of Congress Control Number (LCCN), if any.  If none, leave blank." %><br />
+		<%= f.text_field :lccn %>
+	</div>
+	
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :publisher_place, :title=>"Enter the Place of publication listed on the copyright page.  Enter the City and State, separated by a comma then a space." %><br />
+		<input id="publisher_place" type="text" name="publisher_place" value="<%= h(@book.publisher.pub_place) if @book.publisher %>"></input>
+	</div>
+
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :publisher_name, :title=>"Enter the Library of Congress Control Number (LCCN), if any.  If none, leave blank." %><br />
+		<input id="publisher_name" type="text" name="publisher_name" value="<%= h(@book.publisher.pub_name) if @book.publisher %>"></input>
+	</div>
+
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :copyright %><br />
+		<%= f.text_field :copyright %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :illustrated %><br />
+		<%= f.text_field :illustrated %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :illus_type %><br />
+		<%= f.text_field :illus_type %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :pages %><br />
+		<%= f.text_field :pages %>
+	</div>
+	<% if false %>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :subject1 %><br />
+		<%= f.text_field :subject1 %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :subject2 %><br />
+		<%= f.text_field :subject2 %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :subject3 %><br />
+		<%= f.text_field :subject3 %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :subject4 %><br />
+		<%= f.text_field :subject4 %>
+	</div>
+	<% end %>
+
+	<% if !@isNew %>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :notes1 %><br />
+		<%= f.text_field :notes1 %>
+	</div>
+
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :notes2 %><br />
+		<%= f.text_field :notes2 %>
+	</div>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :notes3 %><br />
+		<%= f.text_field :notes3 %>
+	</div>
+	<% end %>
+	<div style="float:left; width: 25%;" class="field">
+		<%= f.label :awards_publicity %><br />
+		<%= f.text_field :awards_publicity %>
+	</div>
+	<div style="float:left; width: 50%" class="field">
+		<%= f.label :summary %><br />
+		<%= f.text_area :summary, :rows => 6, :cols => 54 %>
+	</div>
+
+</fieldset>
+
+
+<fieldset style="float:left;clear:both;">
+	<legend>Contributors</legend>
+	<div class="field">
+		<table class="authors">
+			<tr><th>Contributor</th><th>Type</th><th>Delete</th></tr>
+			<% @book.authorships.each {|authorship|  author= authorship.author %>	
+				<tr><td><%= h(author.auth_last + ', ' + author.auth_first + ' ' + author.auth_middle) %></td>
+					<td>
+						<%	@authorship = authorship  
+						name = "authorship_type_#{authorship.id}"
+						%>
+
+						<%= select("authorship", "authorship_type", Authorship.authorship_types, {},{:id=>name, :name=>name}) %>
+
+					</td>
+
+					<td><input title="Click here and upon save the author will be removed." type="checkbox" name = "remove_authorship_<%= authorship.id %>"><td></tr>
+						<%   }%>
+						<tr><td><input id="new_author1" type="text"></input></td><td/><td/></tr>
+					</table>
+
+					<% @authorship = Authorship.new 
+					name = 'blank_authorship_list' %>
+					<%= select("authorship", "authorship_type", Authorship.authorship_types, {},{:id=>name, :name=>name,:style=>"display:none;"}) %>
+
+					<% if @user and @user.user_type=='Admin' %>
+						<%= link_to "New Author", new_author_path, {:id=>'author_button',:class=>'button', :target=>'_author'} %>
+						<% end %>
+
+					</fieldset>
+
+
+					<fieldset style="float:left;clear:both;">
+						<legend>Subjects</legend>
+						<div class="field">
+							<table class="subjects">
+								<tr><th>Subject</th><th>Delete</th></tr>
+
+								<% @book.subjects.each do |subject|  %>	
+								<tr><td><%= h(subject.subject) %></td>
+									<td><input type="checkbox" name = "remove_subject_<%= subject.id %>"><td></tr>
+										<%   end %>
+
+
+										<tr><td><input id="new_subject" type="text"></input></td><td/></tr>
+							</table>
+
+					<%  if @user and @user.user_type=='Admin' %>
+					<%= link_to "New Subject", new_subject_path, {:id=>'subject_button',:class=>'button', :target=>'_subject'} %>
+					<% end %>
+					</fieldset>
+					
+
+									<div><%= render :partial=>'copies' %></div>
+
+									<div class="actions" style="float:left;clear:both;"><%= f.submit %></div>
+									<% end %>
+
+									<script type="text/javascript" charset="utf-8">
+									$(function(){
+										var newAuthorIndex = 0;
+										var newAuthor = $('#new_author1').autocomplete({source:'/authors/autocomplete', minLength:2, 
+										select:function(event,ui) {
+											newAuthorIndex++;
+											var row = $('<tr/>');
+											var name = $('<td/>').text(ui.item.value).appendTo(row);
+
+											var list = $('#blank_authorship_list').clone().show().attr('name','new_authorship_type_' + newAuthorIndex);
+											$('<td/>').append(list).appendTo(row);
+											var hidden = $('<input type="hidden"/>').val(ui.item.id).attr('name','new_author_id_' + newAuthorIndex).insertBefore('table.authors');
+
+											var deleter = $('<a>Delete</a>').click(function(){
+												hidden.remove();
+												$(this).parents('tr').remove();
+												return false;
+											});
+											$('<td/>').append(deleter).appendTo(row);
+
+											newAuthor.parents('tr').before(row);
+
+											newAuthor.val('');
+
+											return false;
+										}
+
+									});
+
+
+									var newSubjectIndex = 0;
+									var newSubject = $('#new_subject').autocomplete({source:'/subjects/autocomplete', minLength:2, 
+									select:function(event,ui) {
+										newSubjectIndex++;
+										var row = $('<tr/>');
+										var name = $('<td/>').text(ui.item.value).appendTo(row);
+
+
+										var hidden = $('<input type="hidden"/>').val(ui.item.id).attr('name','new_subject_id_' + newSubjectIndex).insertBefore('table.subjects');
+
+										var deleter = $('<a>Delete</a>').click(function(){
+											hidden.remove();
+											$(this).parents('tr').remove();
+											return false;
+										});
+										$('<td/>').append(deleter).appendTo(row);
+
+										newSubject.parents('tr').before(row);
+
+										newSubject.val('');
+
+										return false;
+									}
+
+								});
+
+								$('#author_button').click(function(){
+									window.open('/authors/new','authors_popup','width=500, height=500,left=300,top=300,scrollbars=yes');
+									return false;
+								});
+
+								$('#subject_button').click(function(){
+									window.open('/subjects/new','subjects_popup','width=500, height=500,left=350,top=300,scrollbars=yes');
+									return false;
+								});
+
+								$('#copy_button').click(function(){
+									window.open('/copies/new?book_id=<%=@book.id%>','copies_popup','width=700, height=500,left=150,top=300,scrollbars=yes');
+									return false;
+								});
+								
+								
+								//don't allow new copy if they have unsaved changes
+//								$('input').change(function(){$('#copy_button').hide()})
+							});
+							</script>

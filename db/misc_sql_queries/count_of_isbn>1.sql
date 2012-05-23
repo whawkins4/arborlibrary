@@ -1,0 +1,1 @@
+﻿select isbn, count(*) from books group by isbn having count(*) > 1

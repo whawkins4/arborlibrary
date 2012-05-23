@@ -1,0 +1,66 @@
+
+<%= form_for(@copy) do |f| %>
+
+	<% if @book %>
+	<input type="hidden" name="book_id" value="<%= h(@book.id)%>"></input>
+	<% end %>
+	<% if @copy.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@copy.errors.count, "error") %> prohibited this copy from being saved:</h2>
+
+		<ul>
+			<% @copy.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	
+
+	
+	<fieldset style="float:left;">
+		<legend>Edit Copy Details</legend>
+
+		<div style="float:right;clear:both;" class="field">
+			<%= f.label :accession %><font color="red">*</font>
+			<%= f.number_field :accession, :size => 20 %>
+		</div>
+		<div style="float:right;clear:both;" class="field">
+			<%= f.label :dewey %><font color="red">*</font>
+			<%= f.text_field :dewey %>
+		</div>
+		<div style="float:right;clear:both;" class="field">
+			<%= f.label :cutter %><font color="red">*</font>
+			<%= f.text_field :cutter %>
+		</div>
+		<div style="float:right;clear:both;" class="field">
+			<%= f.label :copy_number %>
+			<%= f.text_field :copy_number, :size => 20 %>
+		</div>
+
+		<div style="float:right;clear:both;" class="field">
+			<%= f.label :collection %><font color="red">*</font>
+			<%= f.text_field :collection, :size => 20 %>
+		</div>
+
+		<div style="float:right;clear:both;" class="field">
+			<%= f.label :source %>
+			<%= f.text_field :source, :size => 20 %>
+		</div>
+		<div style="float:right;clear:both;" class="field">
+			<%= f.label :catalog_date %>
+			<%= f.text_field :catalog_date, :size => 20 %>
+		</div>
+		<div style="float:right;clear:both;" class="field">
+			<%= f.label :deaccessioned %><b
+			<%= f.check_box :deaccessioned %>
+		</div>
+		<br/>
+		<div style="float:left; clear:both;" class="actions">
+			<%= f.submit %>
+		</div>
+		<div style="float:right; clear:both;">
+		<%= link_to 'Destroy Copy', @copy, confirm: 'Are you sure?', method: :delete, class: 'button' %>
+		</div>
+	</fieldset>
+	<% end %>

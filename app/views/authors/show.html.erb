@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Books By: <%= @author.auth_last %>, <%= @author.auth_first %> <%= @author.auth_middle %></h2>
+
+<table>
+<tr>
+	<th>Title</th>
+	<th>Subtitle</th>
+	<th>Series</th>
+	<th>Authorship Type</th>
+</tr>
+<% @author.authorships.each {|a| %> 
+	
+	<tr><td><%= link_to h(a.book.title),a.book %></td>
+		<td><%= a.book.subtitle %></td>
+		<td><%= a.book.series %></td>
+		<td><%= a.authorship_type_in_words %></td></tr>
+	<%
+	}
+	%>
+</table><br/><br/>
+<%= link_to 'Edit', edit_author_path(@author) %> |
+<%= link_to 'Back', authors_path %>

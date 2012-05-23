@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<% if @subject %>
+<h2><%= h(@subject.subject) %></h2>
+<% if @user and @user.user_type=='Admin' %>
+<%= link_to 'Edit', edit_subject_path(@subject),{:id=>'subject_button',:class=>'button'} %>
+<% end %>
+
+<h3>Books</h3>
+<ul class="books">
+<% @subject.books.order('title').each do |book| %>
+<li><%= link_to h(book.title),book_path(book) %></li>
+<% end %>
+</ul>
+<% else %>
+<h2>Subject <%=params[:id]%> Not Found.</h2>
+<% end %>

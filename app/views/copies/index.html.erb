@@ -1,0 +1,21 @@
+<h2>Listing copies</h2>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @copies.each do |copy| %>
+  <tr>
+    <td><%= link_to 'Show', copy %></td>
+    <td><%= link_to 'Edit', edit_copy_path(copy) %></td>
+    <td><%= link_to 'Destroy', copy, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Copy', new_copy_path %>

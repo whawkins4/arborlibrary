@@ -1,0 +1,1 @@
+﻿insert into authors (auth_last, auth_first, auth_middle) select distinct trim(coalesce(auth_last,'')), trim(coalesce(auth_first,'')), trim(coalesce(auth_middle,'')) from original

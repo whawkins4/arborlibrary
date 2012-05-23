@@ -1,0 +1,22 @@
+<h1>Old Notes</h1>
+<p>These books still have notes in the old fields notes1, notes2, notes3.  Please move the data to the correct place and delete the values from these fields. </p>
+
+
+<table>
+  <tr>
+    <th>Title</th>	
+    <th>Notes1</th>	
+    <th>Notes2</th>
+    <th>Notes3</th>
+  </tr>
+
+
+<% @books.each do |book| %>
+  <tr>
+	<td><%= link_to h(book.title), edit_book_path(book) %></td>
+	<td><%= link_to h(book.notes1), edit_book_path(book) %></td>
+    <td><%= link_to h(book.notes2), edit_book_path(book) %></td>
+	<td><%= link_to h(book.notes3), edit_book_path(book) %></td>    
+  </tr>
+<% end %>
+</table>

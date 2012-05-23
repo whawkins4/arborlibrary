@@ -1,0 +1,34 @@
+<% editable = @user and @user.user_type=='Admin' %>
+
+<fieldset>
+	<legend>Copies</legend>
+	<table class="copies"><tr>
+		<th>Coll.</th>
+		<th>Accession</th>
+		<th>Copy</th>
+		<th>Date</th>
+		<th>Dewey</th>
+		<th>Cutter</th>
+		<th>Status</th>
+	</tr>
+	<% @book.copies.each {|copy|  %>	
+		<tr>
+			<td><%= h(copy.collection) %></td>
+			<% accession = editable ? (link_to h(copy.accession),edit_copy_path(copy), :target=>'blank') : h(copy.accession) %>
+			<td><%= accession %></td>
+			<td> <%= h(copy.copy_number) %></td>
+			<td><%= copy.catalog_date %></td>
+			<td><%= copy.dewey %></td>
+			<td><%= copy.cutter %></td>
+			<td> <%= copy.available? ? 'Available' : 'Checked Out' %></td>
+		</tr>
+		<%   }%>
+	</table>
+
+	<% if @user and @user.user_type=='Admin' %>
+
+		<%= link_to "New Copy", '/copies/new?book_id=' + @book.id.to_i.to_s, {:id=>'copy_button',:class=>'button', :target=>'_subject'} %>
+		<% end %>
+
+
+	</fieldset>

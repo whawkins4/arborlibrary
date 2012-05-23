@@ -1,0 +1,55 @@
+<% if @book %>
+<p id="notice"><%= notice %></p>
+
+<img id="cover_image" src="http://covers.openlibrary.org/b/isbn/<%= @book.isbn.gsub('-','') %>-M.jpg" />
+
+<h2><%= @book.title %></h2>
+<h3><%= @book.subtitle %></h3>
+<h3><%= @book.series %> <%= @book.series_number %></h3>
+
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td><%= @book.date %></td>
+		<td><%= @book.isbn %></td>
+		<td><%= @book.lccn %></td>
+	</tr>
+</table>
+
+<h3>Contributor(s)</h3>
+<table class="authors">
+	<% @book.authorships.each {|authorship|  
+		author = authorship.author
+		%>	
+	<tr><td><%= link_to h(author.auth_last + ', ' + author.auth_first + ' ' + author.auth_middle), author %> <%= %></td>
+		<td><%= authorship.authorship_type_in_words %></td></tr>
+	<%   }%>
+</table>
+
+<h3>Description</h3>
+<p><%= @book.summary %> <%= @book.notes1 %> <%= @book.notes2 %> <%= @book.notes3 %> <%= @book.awards_publicity %> <%= @book.format %>. <%= h(@book.publisher.pub_place) if @book.publisher %>: <%= h(@book.publisher.pub_name) if @book.publisher %> &#169;<%= @book.copyright %>. <%= @book.pages %> <%= @book.illustrated %> <%= @book.illus_type %></p>
+</div>
+
+<h3>Subject(s)</h3>
+<ul class="subjects">
+<% @book.subjects.each do |subj| %>
+	<li><%= link_to h(subj.subject),subject_path(subj) %></li>
+<% end %>
+</ul>
+
+<%= render :partial=>'copies' %>
+
+<% if @user and @user.user_type=='Admin' %>
+	<div id="admin_menu">
+	<%= link_to "Edit Book", edit_book_path(@book), {:id=>'edit_book', :class=>'button'} %>
+	</div>
+<% end %>
+
+<% else %>
+	Sorry, we could not find a book with that accession number or ISBN.
+<% end %>
+<br/><br/>

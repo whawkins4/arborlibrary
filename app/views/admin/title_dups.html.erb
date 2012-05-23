@@ -1,0 +1,55 @@
+<h2>Books With Possibly Duplicate Titles</h2>
+
+<%
+fields = ['isbn','title','dewey','cutter']
+
+
+%>
+<table>
+  <tr>
+	<% fields.each {|field| %> 
+		
+		<th class="<%= field %>_col"><%= field %></th>
+		<%		
+		}
+		%>
+		
+		<th width="150">Author</th>
+	    <th width="540">Title</th>
+	    <th width="10"></th>
+  </tr>
+<% last_isbn = '' 
+	isbn_class_is_odd = true
+%>
+<% @books.each do |book| %>
+
+
+<% this_isbn = book.isbn 
+
+	if this_isbn != last_isbn
+		isbn_class_is_odd = !isbn_class_is_odd
+		last_isbn = this_isbn
+	end
+%>
+  <tr class="isbn_<%= isbn_class_is_odd ? 'odd' : 'even' %>">
+	
+	<% fields.each {|field| %> 
+
+		<td><%= link_to h(book.read_attribute(field)),edit_book_path(book) %></td>
+		<%		
+		}
+		%>
+
+	<% author = book.authors[0] 
+		if author
+	%>
+    <td><%= author.auth_last %>, <%= author.auth_first %></td>
+
+	<% end %>
+	<td><%= link_to h(book.title), :controller=>:books,:action=>:show, :id=>book %></td>
+	<td><%= link_to 'x', book, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<p><%= will_paginate @books if !@disable_pagination%></p>

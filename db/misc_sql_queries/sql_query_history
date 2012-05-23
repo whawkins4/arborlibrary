@@ -1,0 +1,46 @@
+-- Executing query:
+select * from publishers where pub_name LIKE '%Wesley%' order by pub_name
+Total query runtime: 35 ms.
+20 rows retrieved.
+
+-- Executing query:
+SELECT * from publishers
+WHERE pub_name LIKE '%Wesley%'
+Total query runtime: 23 ms.
+20 rows retrieved.
+
+-- Executing query:
+UPDATE publishers
+SET pub_name = 'Addison-Wesley', pub_place = 'Reading, MA'
+WHERE pub_name LIKE '%Wesley%'
+Query returned successfully: 20 rows affected, 859 ms execution time.
+
+-- Executing query:
+SELECT * from publishers
+WHERE pub_name LIKE '%Wesley%'
+Total query runtime: 17 ms.
+20 rows retrieved.
+
+-- Executing query:
+select * from publishers
+Total query runtime: 64 ms.
+4822 rows retrieved.
+
+-- Executing query:
+select * from publishers
+order by pub_name
+Total query runtime: 42 ms.
+4822 rows retrieved.
+
+-- Executing query:
+select * from publishers
+where pub_name = ''
+Total query runtime: 24 ms.
+9 rows retrieved.
+
+-- Executing query:
+select * from publishers
+where pub_name = ''
+Total query runtime: 25 ms.
+9 rows retrieved.
+

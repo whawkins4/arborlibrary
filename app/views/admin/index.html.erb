@@ -1,0 +1,71 @@
+<div id='col1'><h2>Login/Logout</h2>
+<div><input type=button value="Log In" onclick="window.open('/login', 'Administrative Log In','width=225,height=300,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"></div>
+<div><%= button_to("Log Out", :controller => "sessions", :action => 'logout') %></div>
+	
+<h2>Catalog Data</h2>
+Collection Size: <%= pluralize(@total_books, "book") %><br />
+Patrons: <%= pluralize(@total_users, "user") %><br />
+Holds: <%= pluralize(@total_holds, "hold") %><br />
+Outstanding Books: <%= pluralize(@total_checkouts, "book") %><br />
+
+<h2>Catalog Maintenance</h2>
+<input type=button value="Catalog Book" onclick="window.open('/books/new', 'New Book','width=915,height=600,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="New User" onclick="window.open('/users/new', 'New User','width=250,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="New Publisher" onclick="window.open('/publishers/new', 'New Publisher','width=250,height=400,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="Simple Search" onclick="window.open('/', 'Simple Search','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="List Users" onclick="window.open('/users/', 'List Users','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="Check Out Books" onclick="window.open('/checkouts', 'Check Out Books','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="Check In Books" onclick="window.open('/checkin', 'Check In Books','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="Outstanding Books" onclick="window.open('/admin/list_checkouts', 'Outstanding Books','width=915,height=900,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<h2>Cleanup Queries</h2>
+<input type=button value="Old Notes Cleanup" onclick="window.open('/admin/old_notes','Old Notes Cleanup','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="ISBN Dupes" onclick="window.open('/admin/isbn_dups', 'ISBN Dupes','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="Title Dupes" onclick="window.open('/admin/title_dups', 'Title Dupes','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="Author Dupes" onclick="window.open('/admin/author_dups', 'Author Dupes','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<input type=button value="Titles w/ Missing Author" onclick="window.open('/authors/78668', 'Titles w/ Missing Author','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+</div>
+
+<div id='col2'><h2>Minimally Viable Product</h2>
+#todo implement SECURITY across admin pages<br/>
+
+<h2>Data Todos</h2>
+#todo query against the inventory for known books that we don't actually have in the system<br/>
+#todo import most recently cataloged books, checkouts, checkins<br/>
+#todo remove final period from book title ?????<br/>
+#todo manually clean up duplicate isbns<br/>
+#todo author/publisher/title/isbn merging<br/>
+#todo add "imprint" to publishers table<br/>
+select auth_last,auth_first, count(*) from authors group by auth_last, auth_first having count(*)>1<br/>
+#todo generate report for books w/o copy and copies w/o book<br/>
+#todo get rid of the books that linda has marked with a D- prefix in the isbn including moving copies over
+
+<h2>Maximally Viable Product</h2>
+#todo remove copies i.e. deaccession copies from catalog ("logical delete")</br>
+#todo print catalog card from each entry screen<br />
+#todo error upon adding author with identical first middle and last (consider safety check if matching first and last)<br/>
+#todo Google API to fetch book data on edit pg. via ISBN<br/> (https://code.google.com/apis/books/docs/v1/getting_started.html)<br />
+#todo lookup copies from add new book screen<br />
+#todo format elegant library landing home page<br />
+#todo output outstanding books list to .csv <br/>
+#todo add "book accession to modify" to admin page<br />
+#todo link holds to a flash message that pops up when a book on hold is checked in<br />
+#todo cleanup routing for authors/publishers/subjects<br />
+#todo advanced search page<br/>
+#todo make dates a standard date format<br/>
+#todo alert user that a book is on hold at time of checkin<br/>
+#todo remove dead code<br/>
+</div>
+
+

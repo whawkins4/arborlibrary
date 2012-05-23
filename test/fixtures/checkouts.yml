@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  book_accession_id: 1
+  patron_id: 1
+  checked_out_on: 2012-02-15 16:13:56
+  checked_in_on: 2012-02-15 16:13:56
+
+two:
+  book_accession_id: 1
+  patron_id: 1
+  checked_out_on: 2012-02-15 16:13:56
+  checked_in_on: 2012-02-15 16:13:56

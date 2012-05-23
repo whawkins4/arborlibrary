@@ -1,0 +1,1 @@
+﻿COPY users_import_temp from '/Users/willhawkins/arborlibrary/db/patrons.csv' with csv;

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @user.last %>, <%= @user.first %> - <% checkouts = @user.active_checkouts %> <%= checkouts.length %> Books</h2>
+
+<table>
+	<tr>
+		<th>Accession</th>
+		<th>Dewey</th>
+		<th>Cutter</th>
+		<th>Title</th>
+	</tr>
+	<% checkouts.each do |checkout|  %>
+	<tr>
+		<td><%= h(checkout.copy.accession) %></td>
+		<td><%= h(checkout.copy.dewey) %></td>
+		<td><%= h(checkout.copy.cutter) %></td>
+		<td><%= h(checkout.copy.book.title) %></td>
+	</tr>
+	<% end %>
+</table>

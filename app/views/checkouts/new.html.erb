@@ -1,0 +1,67 @@
+<font size="+1"><strong><%= h(@user.name)%></strong></font>
+
+<p>
+
+<% checkouts = @user.active_checkouts %>
+You have <font size="3em"><strong><%= checkouts.length %> books</strong></font> checked out.
+
+<fieldset>
+	<legend>Checked-Out Books</legend>
+	<table>
+	<tr>
+		<th>Accession</th>
+		<th>Dewey</th>
+		<th>Cutter</th>
+		<th>Title</th>
+	</tr>
+	<% checkouts.each do |checkout|  %>
+	<tr>
+		<td><%= h(checkout.copy.accession) %></td>
+		<td><%= h(checkout.copy.dewey) %></td>
+		<td><%= h(checkout.copy.cutter) %></td>
+		<td><%= h(checkout.copy.book.title) %></td>
+	</tr>	
+	<%	end%>
+	</table>
+</fieldset>
+<br/>
+
+<form id="checkout_form" action="/checkouts" method="post">
+	<font size="3.0em" color="brown"><strong>New Checkout:</strong></font> <input id="accession" name="accession" type="text"></input>
+	<input type="hidden" name="library_card" value="<%=h(@library_card)%>"></input>
+	<input type="submit" value="Enter"/>
+</form>
+
+<% if flash[:notice] %>
+<p class="flash"><%= flash[:notice] %></p>
+<% end %>
+
+<audio id="bonk" src="/bonk.mp3"></audio>
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+	$(function(){
+		$('#accession').focus();
+			
+		<% if @playErrorSound %>
+			$('#bonk')[0].play();
+		<% end %>
+		
+		
+		$('#checkout_form').submit(function(){
+			var accession = $('#accession').val();
+			if (accession && accession.length != 8) {
+				$('#accession').val(null);
+				$('#bonk')[0].play();
+				$('p.flash').remove();
+				accession = accession || '';
+				$('<p class="flash">Accession code must be 8 characters long and you entered ' + accession.length +'.</p>').appendTo('body');
+				return false;
+			}
+			return true;
+		});
+	});
+	
+</script>

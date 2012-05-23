@@ -1,0 +1,22 @@
+<h2>Listing subjects</h2>
+
+<% if @user and @user.user_type=='Admin' %>
+	<%= link_to 'New Subject', new_subject_path,{:id=>'subject_button',:class=>'button'} %>
+<% end %>
+
+<table>
+  <tr>
+    <th></th>
+  </tr>
+
+<% @subjects.each do |subject| %>
+  <tr>
+	<td><%= link_to h(subject.subject), subject %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+<p><%= will_paginate @subjects %></p>

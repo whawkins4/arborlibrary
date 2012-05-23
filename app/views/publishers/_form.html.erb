@@ -1,0 +1,25 @@
+<%= form_for(@publisher) do |f| %>
+  <% if @publisher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@publisher.errors.count, "error") %> prohibited this publisher from being saved:</h2>
+
+      <ul>
+      <% @publisher.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pub_name %><br />
+    <%= f.text_field :pub_name, :title=>"Enter the Publisher's name found on the copyright page." %>
+  </div>
+  <div class="field">
+    <%= f.label :pub_place %><br />
+    <%= f.text_field :pub_place, :title=>"Enter the publisher's city and state, separated by a comma and terminating in a colon. Example New York, NY" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

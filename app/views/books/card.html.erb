@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<div id="catalog_card">
+	<div id="r1c1"><%= @book.collection %></div>
+	<div id="r1c2"><%= @book.date %></div>
+	<div id="r1c3"><%= @book.accession %></div>
+	<div id="r2c1"><%= @book.isbn %></div>
+	<div id="r2c2"><%= @book.lccn %></div>
+	<div id="r3c1"><%= @book.dewey %><br /><%= @book.cutter %></br><%= @book.copy %></div>
+	<div id="r3c2">AUTHOR</div>
+	<div id="r4c1"><%= @book.title %>. <%= @book.series %>. <%= @book.format %>. PLACE: PUBLISHER &#169;<%= @book.copyright %>. <%= @book.pages %>. <%= @book.illustrated %><%= @book.illus_type %><br/><%= @book.summary %>. 1. <%= @book.subject1 %> 2. <%= @book.subject2 %> 3. <%= @book.subject3 %> 4. <%= @book.subject4 %> <%= @book.notes1 %><%= @book.notes2 %> <%= @book.notes3 %>. <%= @book.awards_publicity %>. <%= @book.source %>.</div>
+</div>
+
+<%= link_to '← Catalog', catalog_path %>

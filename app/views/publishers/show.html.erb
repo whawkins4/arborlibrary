@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Pub name:</b>
+  <%= @publisher.pub_name %>
+</p>
+
+<p>
+  <b>Pub place:</b>
+  <%= @publisher.pub_place %>
+</p>
+
+
+<%= link_to 'Edit', edit_publisher_path(@publisher) %> |
+<%= link_to 'Back', publishers_path %>

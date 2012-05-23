@@ -1,0 +1,77 @@
+<link href="/stylesheets/print.css.scss" rel="stylesheet" type="text/css" media="print" />
+
+<style>
+@media print
+{
+table {page-break-before:always}
+}
+</style>
+<style type="text/css" media="screen">
+	a.auth_button {
+		float:none;
+	}
+</style>
+<h2><%= @checkout_data.num_tuples if @checkout_data %> Outstanding Books</h2>
+
+<% table_started = false 
+   page_breaks_for_printing = params['print']=='1'
+   if page_breaks_for_printing
+	%>
+	<%=link_to "Unpaginated View",{},{:class=>'button'} %>
+	<%	
+   
+	else
+	%>
+	<%=link_to "Printable View",{:print=>'1'},{:class=>'button'} %>
+	<%	
+	end
+%>
+
+	
+<% 
+	last_patron = nil
+@checkout_data.each do |row| 
+	patron = row["name"]
+	
+	if (page_breaks_for_printing && patron != last_patron) || (!page_breaks_for_printing && !table_started)
+		#todo: insert line break for @media=print
+	#	breaking_class='class="break"'
+		last_patron = patron
+		
+		if table_started 
+		%>	
+		</table>
+		<%	
+		end
+		%>
+		<table>
+		  <tr class="header">
+		    <th>Grade</th>	
+		    <th>Patron</th>	
+		    <th>Accession</th>
+			<th>Dewey</th>
+			<th>Cutter</th>
+			<th>Copy</th>
+		    <th>Title</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		  </tr>
+
+		
+		
+		<%
+		table_started = true
+	end 
+	%>
+  <tr>
+	<td><%= h(row["grade"]) %></td>
+	<td><%= h(row["name"]) %></td>
+	<td><%= link_to h(row["accession"]), '/books/'+ row["accession"].to_i.to_s %></td>
+    <td><%= h(row["dewey"]) %></td>
+	<td><%= h(row["cutter"]) %></td>
+	<td><%= h(row["copy"]) %></td>
+	<td><%= link_to h(row["title"]), '/books/'+ row["accession"] %></td>    
+  </tr>
+<% end %>
+</table>

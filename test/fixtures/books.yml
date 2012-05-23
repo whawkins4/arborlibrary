@@ -1,0 +1,65 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  accession: 1
+  date: MyString
+  dewey: MyString
+  cutter: MyString
+  copy: MyString
+  auth_last: MyString
+  auth_first: MyString
+  auth_middle: MyString
+  title: MyString
+  series: MyString
+  format: MyString
+  isbn: MyString
+  lccn: MyString
+  pub_name: MyString
+  pub_place: MyString
+  copyright: MyString
+  illustrated: MyString
+  illus_type: MyString
+  pages: MyString
+  subject1: MyString
+  subject2: MyString
+  subject3: MyString
+  subject4: MyString
+  notes1: MyString
+  notes2: MyString
+  notes3: MyString
+  summary: MyText
+  awards_publicity: MyString
+  collection: MyString
+  source: MyString
+
+two:
+  accession: 1
+  date: MyString
+  dewey: MyString
+  cutter: MyString
+  copy: MyString
+  auth_last: MyString
+  auth_first: MyString
+  auth_middle: MyString
+  title: MyString
+  series: MyString
+  format: MyString
+  isbn: MyString
+  lccn: MyString
+  pub_name: MyString
+  pub_place: MyString
+  copyright: MyString
+  illustrated: MyString
+  illus_type: MyString
+  pages: MyString
+  subject1: MyString
+  subject2: MyString
+  subject3: MyString
+  subject4: MyString
+  notes1: MyString
+  notes2: MyString
+  notes3: MyString
+  summary: MyText
+  awards_publicity: MyString
+  collection: MyString
+  source: MyString

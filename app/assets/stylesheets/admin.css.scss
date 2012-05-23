@@ -1,0 +1,53 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#timestamp {
+position:absolute;
+left:250px;
+top: 50px;
+color:white;
+font-weight:bold;
+}
+
+#login {
+position:absolute;
+left:635px;
+top: 13px;
+color:red;
+font-weight:bold;
+}
+
+#logout {
+position:absolute;
+left: 685px;
+top: 13px;
+color:red;
+font-weight:bold;
+}
+
+#col1 {
+	position:absolute;
+	left: 10px;
+	top: 115px;
+}
+
+#col2 {
+	position:absolute;
+	left: 275px;
+	top: 115px;
+}
+
+#col3 {
+	position:absolute;
+	left: 450px;
+	top: 115px;
+}
+
+.isbn_col {
+width:200px;	
+}
+
+tr.isbn_even {
+background-color:#bbb;
+}

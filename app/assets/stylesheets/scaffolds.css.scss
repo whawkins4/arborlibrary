@@ -1,0 +1,87 @@
+body {
+  background-color: #fff;
+  color: #385f4a;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 16px; }
+
+p, ol, ul {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 16px; 
+  }
+
+table {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 14px; 
+  text-align:left; 
+  table-layout:fixed; }
+
+td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 16px; 
+  text-align:left; 
+  table-layout:fixed; 
+  padding:0px 5px 0px 0px;}
+
+tdbig {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 18px; 
+  text-align:left; 
+  table-layout:fixed; 
+  padding:0px 15px 0px 0px;}
+
+th {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 16px; 
+  text-align:left; 
+  table-layout:fixed; 
+  padding:0px 5px 0px 0px;}
+
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px; }
+
+a {
+  color: #385f4a;
+  &:hover {
+    color: #fff;
+    background-color: #385f4a; } }
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px; } }
+
+#notice {
+  color: green; }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table; }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #fff;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff; }
+  ul li {
+    font-size: 12px;
+    list-style: square; } }
