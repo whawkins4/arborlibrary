@@ -18,7 +18,7 @@ class Book < ActiveRecord::Base
     return copy ? copy.book : nil
   end
   def self.search(phrase) 
-    phrase.gsub!(/[^a-zA-Z0-9\s]+/,'')
+    phrase.gsub!(/[^a-zA-Z0-9\s\-]+/,'')
     sql = "select b1.id from books b1 where regexp_replace(b1.title, '[^a-zA-Z0-9\s]','') ilike '%" + phrase + "%' or regexp_replace(b1.series, '[^a-zA-Z0-9]','') ilike '%" + phrase + "%' or regexp_replace(b1.subtitle, '[^a-zA-Z0-9]','') ilike  '%" + phrase + "%' or regexp_replace(b1.summary, '[^a-zA-Z0-9]','') ilike  '%" + phrase + "%'
     union 
     select b2.id from books b2 join authors_books ab on b2.id = ab.book_id join authors a on ab.author_id = a.id
