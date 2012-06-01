@@ -1,26 +1,16 @@
-<h2>Books</h2>
+<h2>Welcome to Arbor School's new library catalog!</h2>
 
-<table>
-  <tr>
-    <th>Dewey</th>
-    <th>Cutter</th>
-    <th>Author</th>
-    <th>Title</th>
-  </tr>
+From this home page, you can: <br/>
 
-<% @books.each do |book| %>
-  <tr>
-    <td><%= book.dewey %></td>
-    <td><%= book.cutter %></td>
-	<% author = book.authors[0] 
-		if author
-	%>
-    <td><%= author.auth_last %>, <%= author.auth_first %></td>
+<div class="search" id="search"><form action="/search"><input type="text" name="search"></input><input type="submit" value="Search"></input></form></div><br/>
 
-	<% end %>
-	<td><%= link_to h(book.title), :controller=>:books,:action=>:show, :id=>book %></td>
-  </tr>
-<% end %>
-</table>
+<input type=button value="Check Out Books" onclick="window.open('/checkouts', 'Check Out Books','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
 
-<p><%= will_paginate @books if !@disable_pagination%></p>
+<input type=button value="Check In Books" onclick="window.open('/checkin', 'Check In Books','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+
+<script type="text/javascript" charset="utf-8">
+
+	$('#search').submit(function(){
+		$('#search').focus();
+	});
+</script>

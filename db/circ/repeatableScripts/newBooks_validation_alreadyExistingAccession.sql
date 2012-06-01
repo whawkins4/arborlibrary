@@ -48,12 +48,12 @@ WITH (
 ALTER TABLE book_import
   OWNER TO libraryadmin;
 
-COPY book_import from '/Users/willhawkins/arborlibrary/db/circ/drop/newbooks.csv' with csv HEADER;
+COPY book_import from '/Users/administrator/arborlibrary/db/circ/drop/newbooks.csv' with csv HEADER;
 
 select i.accession, i.title, b.title, * from book_import i 
 join copies c on cast(c.accession as character varying) = i.accession
 join books b on c.book_id = b.id;
 
 
-select * from book_import where length(accession)<>8;
+--select * from book_import where length(accession)<>8;
 

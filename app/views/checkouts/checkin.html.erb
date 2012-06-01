@@ -1,5 +1,8 @@
 <h2>Check In Books</h2>
 
+<input type=button value="Start Over" onclick="window.open('/checkin', '_self','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+<p>
+
 <form id="checkin_form">
 	<input id="accession" type="text" name="accession"/>
 	<input type="submit" value="Checkin"/>
@@ -33,7 +36,7 @@
 				;}
 				else {
 
-					addStatusRow("accession code must be 8 digits long")
+					addStatusRow("*****************************  ACCESSION CODE MUST BE 8 DIGITS LONG    *****************************")
 				}
 				
 				accessionFld.val('').focus();

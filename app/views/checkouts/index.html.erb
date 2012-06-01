@@ -1,12 +1,14 @@
-<h2>Check Out Books</h2>
-
+<h2>Check Out Books<h2>
 
 
 <% if flash[:notice] %>
 <p class="flash"><%= flash[:notice] %></p>
+<% elsif params[:error_id]=="1" %>
+<p class="flash">Checkout was unsuccessful.</p>
 <% end %>
 
-
+<input type=button value="Refresh" onclick="window.open('/checkouts', '_self','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
+<p>
 
 <% if @user %>
 <p>

@@ -14,23 +14,16 @@ color:white;
 font-weight:bold;
 }
 
-#search{
-	position:absolute;
-	top: 10px;
-    left: 700px;
-    height: 16px;
-}
-
 #copyright{
 	font-style: italic; 
 	float:right;
-	position: relative;
+	position: absolute;
 	bottom: 0px;
-    right: 0px;
+    right: 25px;
 }
 
 p.flash {
 	color:red;
-	font-size:2em;
+	font-size:1.5em;
 	font-style:italic;
 }

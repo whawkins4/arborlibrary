@@ -41,37 +41,29 @@ table {page-break-before:always}
 		if table_started 
 		%>	
 		</table>
-		<%	
-		end
-		%>
+		<% end %>
 		<table>
 		  <tr class="header">
-		    <th>Grade</th>	
-		    <th>Patron</th>	
-		    <th>Accession</th>
-			<th>Dewey</th>
-			<th>Cutter</th>
-			<th>Copy</th>
-		    <th>Title</th>
-		    <th></th>
-		    <th></th>
-		    <th></th>
+		    <th style="width:25px"></th>	
+		    <th style="width:200px">Name</th>	
+		    <th style="width:75px">Accession</th>
+			<th style="width 75px">Call#</th>
+			<th style="width:35px"></th>
+			<th style="width:25px">Copy</th>
+		    <th style="width:600px">Title</th>
 		  </tr>
-
-		
-		
 		<%
 		table_started = true
 	end 
 	%>
   <tr>
-	<td><%= h(row["grade"]) %></td>
-	<td><%= h(row["name"]) %></td>
-	<td><%= link_to h(row["accession"]), '/books/'+ row["accession"].to_i.to_s %></td>
-    <td><%= h(row["dewey"]) %></td>
-	<td><%= h(row["cutter"]) %></td>
-	<td><%= h(row["copy"]) %></td>
-	<td><%= link_to h(row["title"]), '/books/'+ row["accession"] %></td>    
+	<td style="width:25px"><%= h(row["grade"]) %></td>
+	<td style="width:200px"><%= h(row["name"]) %></td>
+	<td style="width:75px"><%= link_to h(row["accession"]), '/books/'+ row["accession"].to_i.to_s %></td>
+    <td style="width 75px"><%= h(row["dewey"]) %></td>
+	<td style="width 50px"><%= h(row["cutter"]) %></td>
+	<td style="width 25px"><%= h(row["copy"]) %></td>
+	<td style="width:600px"><%= link_to h(row["title"]), '/books/'+ row["accession"] %></td>    
   </tr>
 <% end %>
 </table>

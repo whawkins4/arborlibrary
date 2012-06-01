@@ -16,7 +16,7 @@ class CheckoutsController < ApplicationController
   end
 
   def checkin
-        @title = "Check Out Books"
+        @title = "Check In Books"
   end
   def process_checkin 
     begin
@@ -30,7 +30,7 @@ class CheckoutsController < ApplicationController
       success=true
     rescue Exception => e
       msg = e.message.gsub('"','').gsub('uncaught throw ','')
-      msg = "Checkin Failed for accession #{accession}. #{msg}"
+      msg = "++++++++++++++++++  Checkin Failed for accession #{accession}. #{msg}  ++++++++++++++++++"
       success=false
     end
     render :json=>"{\"success\":\"#{success}\",\"msg\":\"#{msg}\"}"
@@ -85,7 +85,8 @@ class CheckoutsController < ApplicationController
           msg = e.message.gsub('"','').gsub('uncaught throw ','')
           flash[:notice] = "Checkout failed!  #{msg}"
           @playErrorSound = true
-          redirect_to checkouts_path, notice: 'Checkout was NOT successful!!!'
+          flash[:notice] = 'Checkout was NOT successful!!!'
+          redirect_to :action=>:index, :error_id=>1
           #redirect_to :action=>:new, :library_card=>@library_card
           return 
         end

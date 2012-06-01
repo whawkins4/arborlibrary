@@ -51,7 +51,7 @@ WITH (
 ALTER TABLE book_import
   OWNER TO libraryadmin;
 
-COPY book_import from '/Users/willhawkins/arborlibrary/db/circ/drop/newbooks.csv' with csv;
+COPY book_import from '/Users/administrator/arborlibrary/db/circ/drop/newbooks.csv' with csv;
 
 delete from book_import where timestamp = 'timestamp';
 

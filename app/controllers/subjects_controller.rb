@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-
+  skip_before_filter :authorize
   def autocomplete     
     render :json => Subject.autocomplete(params[:term]).to_json
   end

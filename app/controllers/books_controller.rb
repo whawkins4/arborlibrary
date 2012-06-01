@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  skip_before_filter :authorize, :only=>[:show]
   before_filter :find_book, :only=>[:card, :show, :edit, :update, :destroy]
 
   def card

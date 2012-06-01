@@ -174,10 +174,9 @@ ActiveRecord::Schema.define(:version => 20120516164449) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "accession"
-    t.boolean  "deleted",                     :default => false, :null => false
-    t.string   "dewey",         :limit => 10
-    t.string   "cutter",        :limit => 4
-    t.boolean  "deaccessioned",               :default => false, :null => false
+    t.boolean  "deleted",                    :default => false, :null => false
+    t.string   "dewey",        :limit => 10
+    t.string   "cutter",       :limit => 4
   end
 
   add_index "copies", ["accession"], :name => "index_copies_on_accession", :unique => true
