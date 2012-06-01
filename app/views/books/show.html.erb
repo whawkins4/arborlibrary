@@ -43,13 +43,14 @@
 
 <%= render :partial=>'copies' %>
 
-<% if @user and @user.user_type=='Admin' %>
-	<div id="admin_menu">
-	<%= link_to "Edit Book", edit_book_path(@book), {:id=>'edit_book', :class=>'button'} %>
-	</div>
-<% end %>
-
 <% else %>
 	Sorry, we could not find a book with that accession number or ISBN.
 <% end %>
-<br/><br/>
+
+<%  if @user and @user.user_type=='Admin' %>
+<%= link_to 'Show', @copy %>
+<%= link_to 'Destroy', @copy, confirm: 'Are you sure?', method: :delete %>
+<%= link_to 'Edit', edit_copy_path(@copy) %>
+<% end %>
+
+

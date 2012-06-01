@@ -2,7 +2,14 @@
 
 From this home page, you can: <br/>
 
-<div class="search" id="search"><form action="/search"><input type="text" name="search"></input><input type="submit" value="Search"></input></form></div><br/>
+<form action="/search"><input type="text" name="search"></input><input type="submit" value="Search"></input></form>
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+	$('#search').focus();
+});	
+</script>
+<br/>
 
 <input type=button value="Check Out Books" onclick="window.open('/checkouts', 'Check Out Books','width=915,height=500,left=300,top=200,fullscreen=yes,toolbar=no,menubar=no,resizable=no,location=no,directories=no,status=no');"><br/>
 

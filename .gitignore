@@ -6,6 +6,7 @@ db/original data/*.csv
 db/patron data/*.csv
 db/backups/*.dat.gz
 db/backups/*.dat
+db/backups
 db/*.sqlite3
 db/*.sql
 db/*.csv

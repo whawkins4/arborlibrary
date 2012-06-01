@@ -29,6 +29,12 @@
 Hello, <%= h(@user.name)%>
 <% end %></div>
 
+<div id="admin_button">
+<% if @user %>
+<input type="button" value="Main Menu" onclick="window.open('/admin', '_self','width=100%');"><br/>
+<% end %>
+</div>
+
 <head>
   <title><%= @title ? @title + ' - ' : '' %>Arbor School of Arts and Sciences</title>
   <%= javascript_include_tag :defaults %>
