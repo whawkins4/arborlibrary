@@ -42,7 +42,7 @@ $(function(){
 
 	$(function(){
 
-		<% if @playErrorSound %>
+		<% if @playErrorSound || params[:error_id] %>
 			$('#bonk')[0].play();
 		<% end %>
 		$('#card_form').submit(function(){

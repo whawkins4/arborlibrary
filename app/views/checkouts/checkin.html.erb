@@ -10,6 +10,10 @@
 </form>
 
 <ul id="success_messages"/>
+
+
+<audio id="bonk" src="/bonk.mp3"></audio>
+
 <script type="text/javascript" charset="utf-8">
 	$(function(){
 		
@@ -36,7 +40,8 @@
 				;}
 				else {
 
-					addStatusRow("*****************************  ACCESSION CODE MUST BE 8 DIGITS LONG    *****************************")
+					addStatusRow("*****************************  ACCESSION CODE MUST BE 8 DIGITS LONG    *****************************");
+					$('#bonk')[0].play();
 				}
 				
 				accessionFld.val('').focus();
