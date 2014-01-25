@@ -40,6 +40,7 @@ Arborlibrary::Application.routes.draw do
 
   resources :books
 
+#restore this when we finish the book duplication functionality  match 'books/duplicate:id' => 'books#duplicate'  #,via=>:post
 
   match 'checkouts/checkin' => 'checkouts#process_checkin', :via=>:post
 

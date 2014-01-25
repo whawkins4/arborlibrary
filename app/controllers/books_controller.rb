@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   skip_before_filter :authorize, :only=>[:show]
-  before_filter :find_book, :only=>[:card, :show, :edit, :update, :destroy]
+  before_filter :find_book, :only=>[:card, :show, :edit, :update, :destroy, :duplicate]
 
   def card
 
@@ -127,6 +127,9 @@ class BooksController < ApplicationController
     end
   end
 
+  def duplicate
+    @book.duplicate
+  end
 
   private
   def find_book

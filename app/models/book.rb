@@ -12,6 +12,20 @@ class Book < ActiveRecord::Base
 #  def to_param
 #    "#{isbn || id}"
 #  end
+
+
+  def duplicate
+    new_one = self.dup
+    new_one.save!
+    
+    self.authorships.each do |existing_authorship|
+      
+      new_one.authorships.create(:book=>existing_authorship.book, :author=>existing_authorship.author, :authorship_type=>existing_authorship.authorship_type)
+      
+    end
+
+  end
+  
   def self.find_by_accession(accession_id)
     copy = Copy.find_by_accession(accession_id)
     

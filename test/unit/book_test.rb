@@ -11,4 +11,10 @@ class BookTest < ActiveSupport::TestCase
     
     puts "hello"
   end
+  
+  
+  test "duplicate" do
+  Book.find(:first).duplicate
+  
+  end
 end
