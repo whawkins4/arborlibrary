@@ -10,6 +10,11 @@
 		<th>Dewey</th>
 		<th>Cutter</th>
 		<th>Status</th>
+		<% if @user and @user.user_type=='Admin' %>
+		<th>Checked Out By</th>
+		<th>Checked Out</th>
+		<% end %>
+		
 	</tr>
 	<% @book.copies.each {|copy|  %>	
 		<tr>
@@ -20,7 +25,19 @@
 			<td><%= copy.catalog_date %></td>
 			<td><%= copy.dewey %></td>
 			<td><%= copy.cutter %></td>
-			<td> <%= copy.available? ? 'Available' : 'Checked Out' %></td>
+			<td><%= copy.available? ? 'Available' : 'Checked Out' %></td>
+		<% if @user and @user.user_type=='Admin' %>
+			<% if copy.available? %>
+				<td></td>
+				<td></td>
+			<% else %>
+			
+				<% checkout = copy.checkouts[0] %>
+				<td><%= "#{checkout.user.first} #{checkout.user.last} " %></td>
+				<td><%= checkout.checked_out_on.to_date %></td>
+			
+			<% end %>
+		<% end %>
 		</tr>
 		<%   }%>
 	</table>

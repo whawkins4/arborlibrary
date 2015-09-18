@@ -46,6 +46,7 @@ table {page-break-before:always}
 		  <tr class="header">
 		    <th style="width:25px"></th>	
 		    <th style="width:200px">Name</th>	
+		    <th style="width:150px">Checked Out</th>	
 		    <th style="width:75px">Accession</th>
 			<th style="width 75px">Call#</th>
 			<th style="width:35px"></th>
@@ -59,6 +60,7 @@ table {page-break-before:always}
   <tr>
 	<td style="width:25px"><%= h(row["grade"]) %></td>
 	<td style="width:200px"><%= h(row["name"]) %></td>
+	<td style="width:150px"><%= h(row["checked_out_on"][0..9]) %></td>
 	<td style="width:75px"><%= link_to h(row["accession"]), '/books/'+ row["accession"].to_i.to_s %></td>
     <td style="width 75px"><%= h(row["dewey"]) %></td>
 	<td style="width 50px"><%= h(row["cutter"]) %></td>

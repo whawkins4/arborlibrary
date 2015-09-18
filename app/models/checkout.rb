@@ -24,7 +24,8 @@ class Checkout < ActiveRecord::Base
   end
   def self.checkout_report_data 
 
-    sql="select u.grade, u.last || ', ' || u.first as name, c.dewey, c.cutter, c.copy_number as copy, b.title, chk.checked_out_on, c.accession from checkouts chk
+    sql="select u.grade, u.last || ', ' || u.first as name, c.dewey, c.cutter, c.copy_number as copy, b.title, chk.checked_out_on, c.accession 
+    from checkouts chk
     join copies c on chk.copy_id= c.id
     join books b on c.book_id = b.id
     left join users u on chk.user_id = u.id
